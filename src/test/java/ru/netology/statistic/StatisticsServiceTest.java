@@ -7,14 +7,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class StatisticsServiceTest {
 
     @Test
-    void findMax() {
+    void findMaxAmongSmall() {
         StatisticsService service = new StatisticsService();
-
         long[] incomesInBillions = {12, 5, 8, 4, 5, 3, 8, 6, 11, 11, 12};
-        long expected = 12;
+        assertEquals(12, service.findMax(incomesInBillions));
+    }
 
-        long actual = service.findMax(incomesInBillions);
-
-        assertEquals(expected, actual);
+    @Test
+    void findMaxAmongBig() {
+        StatisticsService service = new StatisticsService();
+        long[] incomesInBillions = {300, 13, 999, 2};
+        assertEquals(999, service.findMax(incomesInBillions));
     }
 }
